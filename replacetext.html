@@ -1,1 +1,89 @@
-hhh
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Page</title>
+    <style>
+      /* CSS styles go here */
+      
+      label {
+  display: inline-block;
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+input[type="text"], textarea {
+  width: 300px;
+  height: 50px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#copy-btn {
+  margin-left: 10px;
+}
+
+#output-data {
+  height: 150px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div>
+  <label for="input-data">Input Data:</label>
+  <textarea id="input-data"></textarea>
+</div>
+<div>
+  <label for="find-text">Find Text:</label>
+  <input type="text" id="find-text">
+</div>
+<div>
+  <label for="replace-with">Replace With:</label>
+  <input type="text" id="replace-with">
+</div>
+<div>
+  <button id="replace-btn" onclick="replaceText()">Replace Text</button>
+  <button id="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+</div>
+<div>
+  <label for="output-data">Output Data:</label>
+  <textarea id="output-data"></textarea>
+</div>
+
+    <script>
+      // JavaScript code goes here
+      function replaceText() {
+  var inputData = document.getElementById("input-data").value;
+  var findText = document.getElementById("find-text").value;
+  var replaceWith = document.getElementById("replace-with").value;
+  var outputData = inputData.replace(new RegExp(findText, 'g'), replaceWith);
+  document.getElementById("output-data").value = outputData;
+}
+
+function copyToClipboard() {
+  var outputData = document.getElementById("output-data");
+  outputData.select();
+  document.execCommand("copy");
+  alert("Copied to clipboard: " + outputData.value);
+}
+
+    </script>
+  </body>
+</html>
+
+
